@@ -89,6 +89,9 @@ export function invariant(
 }
 
 export function warn(message: string, code: ErrorCode) {
+  // no-op to silence errors in development since we are using for a library where the
+  // user can't fix the warnings
+  return null;
   if (!cache.has(message)) {
     console.warn(message + getDebugOutput() + helpUrl + code);
     cache.add(message);
